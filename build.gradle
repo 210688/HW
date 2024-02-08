@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.1.0'
+
+    // Selenide
+    testImplementation("com.codeborne:selenide-testng:7.1.0")
+    testRuntimeOnly("org.slf4j:slf4j-simple:2.0.9")
+
+    // JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+
+}
+
+test {
+    useJUnitPlatform{}
+}
